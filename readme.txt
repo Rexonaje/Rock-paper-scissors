@@ -1,0 +1,1 @@
+This is a Rock papper and scissors game to play in the chrome console. Is part of the exercises of theOdinProject course and is to make this game with js and after i will be put in some graphics with css.
