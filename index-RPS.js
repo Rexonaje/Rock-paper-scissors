@@ -1,11 +1,39 @@
+//player selection 
+let playerSelect;
+   
+const rockbutton = document.querySelector("#Rock");
+const papperbutton = document.querySelector("#papper");
+const  scissorsbutton = document.querySelector("#Scissors");
 
 
+
+rockbutton.addEventListener("click", function RockPlayer(){
+    playerSelect="rock";
+    console.log(playerSelect);
+    PlayRound();
+})
+
+papperbutton.addEventListener("click",
+function PapperPlayer(){
+    playerSelect="papper";
+    console.log(playerSelect);
+    PlayRound();
+} )
+
+scissorsbutton.addEventListener("click",function Scissorsplayer(){
+    playerSelect="scissors";
+    console.log(playerSelect);
+    PlayRound();
+})
+    
+
+//selection Pc function |
 function getRandomNumber(min,max){
     min = Math.ceil(min);
     max=  Math.floor(max);
     return Math.floor(Math.random()* (max - min  + 1) + min);
 }
- //console.log(getRandomNumber(1,3));
+
 function getRandoChoice(){
     let choiceNumber= getRandomNumber(1,3);
     let choice;
@@ -20,27 +48,33 @@ function getRandoChoice(){
     }
 return choice
 }
-//console.log(getRandoChoice());
 
+//playingfunction
+let winner;
+let roundCount= 0;
+let winCount=0;
 function PlayRound(playerSelection,ComputerSelection){
-    let winner;
-  
-    
-    playerSelection = prompt("choose your weapon!");
+ 
+
+  playerSelection=playerSelect;
+   
     ComputerSelection = getRandoChoice();
     
     console.log("This Round:");
     console.log("your chose : " + playerSelection);
     console.log("PC chose : " + ComputerSelection);
 
-    playerSelection.toLowerCase();
+   
 
     function rockChose(){ 
         if(ComputerSelection=="rock"){
           winner="its a draw";
+          
         }
         else if(ComputerSelection=="scissors"){
             winner="you win!";
+            winCount=winCount +1;
+
         }
         else if(ComputerSelection=="papper" ){
             winner="you lose :(";
@@ -56,12 +90,14 @@ function PlayRound(playerSelection,ComputerSelection){
       }
         else if(ComputerSelection=="papper" ){
           winner="you win";
+          winCount=winCount +1;
       }
       return winner
     }
     function papperChose(){
         if(ComputerSelection=="rock"){
            winner="you win!" ;
+           winCount=winCount +1;
         }
         else if(ComputerSelection=="scissors"){
             winner="you lose";
@@ -82,22 +118,70 @@ function PlayRound(playerSelection,ComputerSelection){
     if(playerSelection=="papper"){
     papperChose();
     }
-   // if(playerSelection!= "rock" || playerSelection !="scissors"|| playerSelection !="papper"){
-     //   winner="chose a correct weapon!!";
-       // }
-return winner 
+  //generar el score al jugar
+
+
+    let scoreList = document.querySelector('.listScore');
+    let listItem = document.createElement('li');
+
+    let ContentItem= document.createTextNode( playerSelection + ' vs '+ ComputerSelection + '  ' + winner);
+    listItem.appendChild(ContentItem);
+    scoreList.appendChild(listItem);
+
+//cuenta 5 rondas y detiene el juego avisando el ganador 
+
+    roundCount=roundCount + 1;
+
+    if(roundCount==5){
+        let score=document.getElementById('score');
+        let winnerDiv=document.createElement('p');
+        let divContent;
+        if(winCount>=3){divContent =document.createTextNode("You win he Game");}
+        if(winCount<3){divContent =document.createTextNode("You NOT win he Game");}
+
+        winnerDiv.appendChild(divContent);
+        score.appendChild(winnerDiv);
+
+
+        //disabling buttons
+        rockbutton.disabled=true;
+        papperbutton.disabled=true;
+        scissorsbutton.disabled=true;
+    }
+       // alert(winner + " the game");
+       return winner
 }
 
-function PlayGame(score){
-    score=[];
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//5 rounds function
+//function PlayGame(score){
+ //   score=[];
     
-    for (let i = 0; i<5 ;i++){
-     score[i]="round";   
-     score[i]= PlayRound();
+ //   for (let i = 0; i<5 ;i++){
+ //    score[i]="round";   
+  //   score[i]= PlayRound();
      
       
-    }
-    return score
-}
-console.log( PlayGame());
+ //   }
+ //   return score
+//}
+//console.log( PlayGame());
 
