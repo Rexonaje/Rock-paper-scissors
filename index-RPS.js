@@ -77,13 +77,13 @@ function PlayRound(playerSelection,ComputerSelection){
 
         }
         else if(ComputerSelection=="papper" ){
-            winner="you lose :(";
+            winner="you lose";
         }
         return winner
     }
     function scissorChose(){
         if(ComputerSelection=="rock"){
-        winner="you lose :(";
+        winner="you lose";
       }
         else if(ComputerSelection=="scissors"){
           winner="its a draw";
@@ -133,7 +133,7 @@ function PlayRound(playerSelection,ComputerSelection){
     roundCount=roundCount + 1;
 
     if(roundCount==5){
-        let score=document.getElementById('score');
+        let score=document.getElementById('result');
         let winnerDiv=document.createElement('p');
         let divContent;
         if(winCount>=3){divContent =document.createTextNode("You win he Game");}
