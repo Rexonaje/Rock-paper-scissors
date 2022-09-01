@@ -64,46 +64,47 @@ function PlayRound(playerSelection,ComputerSelection){
     console.log("your chose : " + playerSelection);
     console.log("PC chose : " + ComputerSelection);
 
+ 
    
 
     function rockChose(){ 
         if(ComputerSelection=="rock"){
-          winner="its a draw";
+          winner="Draw";
           
         }
         else if(ComputerSelection=="scissors"){
-            winner="you win!";
+            winner="Win!";
             winCount=winCount +1;
 
         }
         else if(ComputerSelection=="papper" ){
-            winner="you lose";
+            winner="Lose";
         }
         return winner
     }
     function scissorChose(){
         if(ComputerSelection=="rock"){
-        winner="you lose";
+        winner="Lose";
       }
         else if(ComputerSelection=="scissors"){
-          winner="its a draw";
+          winner="Draw";
       }
         else if(ComputerSelection=="papper" ){
-          winner="you win";
+          winner="Win";
           winCount=winCount +1;
       }
       return winner
     }
     function papperChose(){
         if(ComputerSelection=="rock"){
-           winner="you win!" ;
+           winner="Win" ;
            winCount=winCount +1;
         }
         else if(ComputerSelection=="scissors"){
-            winner="you lose";
+            winner="Lose";
         }
         else if(ComputerSelection=="papper"){
-            winner = "its a draw";
+            winner = "Draw";
         }    
         return winner
     }
@@ -118,6 +119,31 @@ function PlayRound(playerSelection,ComputerSelection){
     if(playerSelection=="papper"){
     papperChose();
     }
+
+    if(ComputerSelection=="rock"){
+    let rock=document.getElementById("pcimg");  //.style.display='none'
+       let newimg=document.querySelector('.pcshow');
+       let img=document.createElement('img');
+                img.src='closed_hand.svg';
+                img.id='pcimg';
+          rock.replaceWith(img);
+    }
+    if(ComputerSelection=="scissors"){
+        let rock=document.getElementById("pcimg");  //.style.display='none'
+           let newimg=document.querySelector('.pcshow');
+           let img=document.createElement('img');
+                    img.src='scissors_hand.svg';
+                    img.id='pcimg';
+              rock.replaceWith(img);
+        }
+        if(ComputerSelection=="papper"){
+            let rock=document.getElementById("pcimg");  //.style.display='none'
+               let newimg=document.querySelector('.pcshow');
+               let img=document.createElement('img');
+                        img.src='open_hand.svg';
+                        img.id='pcimg';
+                  rock.replaceWith(img);
+            }
   //generar el score al jugar
 
 
@@ -136,8 +162,12 @@ function PlayRound(playerSelection,ComputerSelection){
         let score=document.getElementById('result');
         let winnerDiv=document.createElement('p');
         let divContent;
-        if(winCount>=3){divContent =document.createTextNode("You win he Game");}
-        if(winCount<3){divContent =document.createTextNode("You NOT win he Game");}
+        if(winCount>=3){
+            divContent =document.createTextNode("Player Wins");
+        }
+        if(winCount<3){
+            divContent =document.createTextNode("Computer Wins");
+    }
 
         winnerDiv.appendChild(divContent);
         score.appendChild(winnerDiv);

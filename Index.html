@@ -14,15 +14,18 @@
         </header>
     <main>
         <div class="game">
-
-            <div class="WeaponSelector"> 
-                <button type="button" id="Rock"  >Rock</button>
-                <button type="button" id="papper" >Papper</button>
-                <button type="button"b id="Scissors">scissors</button>
-            </div>
-       
+            <section class="WeaponScreen">
+                <div class="WeaponSelector"> 
+                    <button type="button" id="Rock"  ><img class="img" src="closed_hand.svg"></button>
+                    <button type="button" id="papper" ><img class="img" src="open_hand.svg"></button>
+                    <button type="button" id="Scissors"><img class="img" src="scissors_hand.svg"></button>
+                </div>
+                <div class="PcSelector">
+                    <div class="pcshow"><img id="pcimg" src="no_selected.svg"></div>
+                </div>
+            </section>
             <div class="reloadPage">
-                <button onClick="window.location.reload();">Restart Game</button>
+                <button onClick="window.location.reload();"><img class="img" src="Restart_game.svg"></button>
             </div>
         </div>
 
@@ -30,12 +33,15 @@
             <ul class="tab">
                 <li class="titleScore"><h2>Score:</h2></li>
                 <li class="listScore" ></li>
-                <li id="result">Result of the game:</li>
+                <li id="result"></li>
             </ul>
         </div>
         <script src="index-RPS.js"></script>
     </main>
     <footer>
+        <p>Carlos Nicolas Brambilla</p>
+        <a href="https://www.linkedin.com/in/nicolas-brambilla-0992b719a/">Linkedin profile</a>
+        
     </footer>
 </body>
 </html>
